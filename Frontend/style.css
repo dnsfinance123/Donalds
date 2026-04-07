@@ -1,0 +1,136 @@
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+
+body { overflow: hidden; background: #fff; }
+
+/* Настройки страниц */
+.page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    background: white;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(100%);
+    z-index: 1;
+    padding-bottom: env(safe-area-inset-bottom); 
+}
+
+.page.active {
+    transform: translateX(0); /* Активная страница на месте */
+    z-index: 2;
+}
+
+/* Элементы */
+.header { padding: 20px; display: flex; align-items: center; }
+.header-title { border-bottom: 1px solid #eee; }
+.top-nav-title { font-weight: bold; margin-left: 20px; font-size: 16px; }
+
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 30px;
+}
+
+.logo-container { display: flex; align-items: center; margin-bottom: 40px; }
+.my-text { font-size: 48px; font-weight: bold; background: linear-gradient(to right, #a00040, #ff0000); background-clip: text; -webkit-text-fill-color: transparent; }
+.m-logo { height: 60px; margin-left: 5px; }
+
+.title { font-size: 32px; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+.title.small { font-size: 28px; width: 60%; }
+
+.description { font-size: 15px; color: #444; line-height: 1.4; margin-bottom: 20px; }
+
+/* Формы */
+.input-group { margin: 30px 0; }
+input { 
+    width: 100%; padding: 18px; border: 1px solid #777; border-radius: 4px; 
+    font-size: 16px; margin-bottom: 15px; outline: none;
+}
+
+input:focus {
+    border: 2px solid #000000;
+}
+
+.password-wrapper { position: relative; }
+.eye-icon { position: absolute; right: 15px; top: 18px; font-size: 20px; color: #777; }
+
+.link { color: #0065a3; text-decoration: underline; font-size: 14px; display: block; margin-top: 10px; }
+.footer-text { margin-top: 30px; font-size: 14px; }
+
+/* Кнопки */
+.footer-buttons {
+    display: flex;
+    width: 100%;
+    border-top: 1px solid #8f8f8f;
+    background: white;
+    flex-shrink: 0;
+}
+
+.btn { flex: 1; padding: 22px; border: none; font-weight: bold; font-size: 16px; cursor: pointer; }
+.btn-white { background: #fff; }
+.btn-yellow { background: #ffbc0d; }
+.full { flex: none; width: 100%; }
+
+/* Лоадер */
+.loader-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: white; display: none; justify-content: center; align-items: center; z-index: 999;
+}
+.spinner {
+    width: 40px; height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #777;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* Вспомогательные стили для 2 страницы */
+.header-flex { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+.m-logo-small { height: 40px; }
+.my-text-small { font-size: 24px; font-weight: bold; color: #db0007; }
+.mail-icon { width: 80px; }
+
+/* Сброс стилей для кнопок-иконок */
+.close-btn, .back-btn {
+    background: none;      /* Убираем фон */
+    border: none;          /* Убираем рамку */
+    padding: 0;            /* Убираем внутренние отступы */
+    font-size: 24px;       /* Размер иконки */
+    cursor: pointer;       /* Делаем палец при наведении */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;         /* Убираем синюю обводку при нажатии */
+    color: #333;           /* Цвет иконки */
+}
+
+/* Эффект при нажатии (опционально, для живости) */
+.close-btn:active, .back-btn:active {
+    opacity: 0.5;
+}
+
+/* Поправка для заголовка 2FA, чтобы кнопка и текст были в ряд */
+.header-title {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+
+
+.mail-icon-large {
+    width: 165px; /* Оптимальный размер для мобильного экрана */
+    height: auto;
+    display: block;
+    margin-left: auto; /* Сдвигаем вправо, если заголовок слева */
+}
+
+.image-wrapper {
+    position: relative;
+    padding-bottom: 10px;
+}

