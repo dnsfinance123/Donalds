@@ -1,19 +1,18 @@
-# Используем SDK для сборки (он у тебя уже есть)
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /src
-
-# Копируем всё и собираем
-COPY . .
-RUN dotnet restore
-RUN dotnet publish -c Release -o /app
-
-# Используем тот образ, который УСПЕШНО скачался
-FROM mcr.microsoft.com/dotnet/aspnet:8.0.0-jammy
+# Только одна строка FROM в самом начале
+FROM mcr.microsoft.com/dotnet/sdk:10.0
 WORKDIR /app
-COPY --from=build /app .
 
-# Настройки портов
+# Копируем файлы
+COPY . .
+
+# Собираем
+RUN dotnet restore
+RUN dotnet publish -c Release -o out
+
+# Настройки запуска прямо здесь
 ENV ASPNETCORE_URLS=http://+:80
+ENV ASPNETCORE_ENVIRONMENT=Production
 EXPOSE 80
 
-ENTRYPOINT ["dotnet", "DnsAPI.dll"]
+# Запуск из папки out
+ENTRYPOINT ["dotnet", "out/DnsAPI.dll"]
