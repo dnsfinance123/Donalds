@@ -1,20 +1,18 @@
-# Используем SDK для сборки
+# Используем SDK для сборки (он у тебя уже есть)
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Копируем файлы проекта и восстанавливаем зависимости
+# Копируем всё и собираем
 COPY . .
 RUN dotnet restore
-
-# Собираем проект в режиме Release
 RUN dotnet publish -c Release -o /app
 
-# Используем легкий образ рантайма для запуска
-FROM mcr.microsoft.com/dotnet/aspnet8.0
+# Используем тот образ, который УСПЕШНО скачался
+FROM mcr.microsoft.com/dotnet/aspnet:8.0.0-jammy
 WORKDIR /app
 COPY --from=build /app .
 
-# Важно: ASP.NET внутри контейнера по умолчанию слушает порт 8080 или 80
+# Настройки портов
 ENV ASPNETCORE_URLS=http://+:80
 EXPOSE 80
 
