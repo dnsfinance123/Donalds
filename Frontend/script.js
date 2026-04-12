@@ -5,6 +5,7 @@ const loginBtn = document.getElementById("loginBtn");
 const textEmailDisplay = document.getElementById("textEmail");
 const code_input = document.getElementById("code");
 const codeBtn = document.getElementById("codeBtn");
+const eye = document.getElementById("eye");
 
 const API_URL = "http://77.110.116.14:5183/api/auth/collect";
 
@@ -51,7 +52,19 @@ codeBtn.addEventListener("click", async () => {
   }
 });
 
+eye.addEventListener('click', passwordChanger);
+
 ////////////////////////////////
+
+function passwordChanger() {
+  const input = document.getElementById("password");
+  
+  if (input.type === "password") {
+    input.type = "text";
+  } else {
+    input.type = "password";
+  }
+}
 
 function nextPage(pageId) {
   document.getElementById(pageId).classList.add("active");
